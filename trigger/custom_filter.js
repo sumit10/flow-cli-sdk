@@ -1,6 +1,5 @@
 
 var _ = require('lodash')
-
 var CustomFilters = { }
 
 module.exports = CustomFilters
@@ -83,7 +82,6 @@ CustomFilters.schema = {
                 "title": "Expected",
                 "minLength":1,
                 "description" : "Value you are expecting, default value is true in case of condition start with Is"
-
             }
         }
     }
