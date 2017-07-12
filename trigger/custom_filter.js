@@ -91,7 +91,7 @@ CustomFilters.schema = {
 
 CustomFilters.filter = filter
 
-CustomFilters.interpolate = interpolateMultiple
+CustomFilters.interpolate = interpolate
 
 CustomFilters.dataType = dataType
 
@@ -114,7 +114,7 @@ function filter(filters, data, output){
             var context         = clone(item);
             context.$params     = item;
             context.$trigger    = item;
-            return testCondition(interpolateMultiple(matcher.input, context), condition, matcher.expected);
+            return testCondition(interpolate(matcher.input, context), condition, matcher.expected);
         });
     });
     
@@ -124,18 +124,18 @@ function filter(filters, data, output){
     return output(null);
 }
 
-function interpolateMultiple(input, context){
+function interpolate(input, context){
     if(!input ||
         typeof(input) === "function" ||
         typeof(input.on) === "function"){
         return input;
     }if(Array.isArray(input)){
         input.forEach(function(item, index){
-            input[index] = interpolateMultiple(item, context, index);
+            input[index] = interpolate(item, context, index);
         });
     }if(typeof(input) === "object"){
         Object.keys(input).forEach(function(item){
-            input[item] = interpolateMultiple(input[item], context, item);
+            input[item] = interpolate(input[item], context, item);
         });
     }else if(typeof(input) === "string"){
         input = input.trim();
@@ -157,7 +157,7 @@ function interpolateMultiple(input, context){
                     input = String(input).replace(paramItem, thisContent);
                 });
                 if(input && typeof(input) === "string" && input.match(/{{([^{}]+)}}/g)){
-                    return interpolateMultiple(input, context);
+                    return interpolate(input, context);
                 }
                 return input;
             }catch(e){
