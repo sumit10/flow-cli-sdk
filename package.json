@@ -1,0 +1,16 @@
+{
+  "name": "flow-cli-sdk",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/builtio-flow/flow-cli-sdk.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "lodash": "4.17.4"
+  }
+}
