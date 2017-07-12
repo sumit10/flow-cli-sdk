@@ -1,7 +1,7 @@
 
-var _ = require('lodash');
+var _ = require('lodash')
 
-var CustomFilters = { };
+var CustomFilters = { }
 
 module.exports = CustomFilters
 
@@ -91,6 +91,9 @@ CustomFilters.schema = {
 
 CustomFilters.filter = filter
 
+CustomFilters.interpolate = interpolateMultiple
+
+CustomFilters.dataType = dataType
 
 function filter(filters, data, output){
     var customFilters = [ ];
