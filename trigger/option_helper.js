@@ -1,7 +1,7 @@
 
 module.exports = function Meta(meta){
 
-	this.meta = (meta && typeof(meta) === 'object' ? meta || { })
+	this.meta = (meta && typeof(meta) === 'object') ? meta : {}
 
 	this.setMeta = function(arg1, arg2){
 		var me = this
